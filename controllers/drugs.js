@@ -11,10 +11,20 @@ const getDrugs = async (req, res) => {
     code: 200,
     message: "Success operation",
     totalCount: totalCount,
-    Drugs: result,
+    drugs: result,
   });
+};
+
+const getDrugById = async (req, res) => {
+  const { id } = req.params;
+  const drugById = await Drug.findById(id);
+  if (!drugById) {
+    throw HttpError(404, "Not Found");
+  }
+  res.json(drugById);
 };
 
 module.exports = {
   getDrugs: controllerWrapper(getDrugs),
+  getDrugById: controllerWrapper(getDrugById),
 };

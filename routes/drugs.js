@@ -6,5 +6,5 @@ const ctrl = require("../controllers/drugs");
 const router = express.Router();
 
 router.get("/drugs", ctrl.getDrugs);
-
+router.get("/drugs/:id", ctrl.getDrugById);
 module.exports = router;
